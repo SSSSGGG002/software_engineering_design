@@ -1,0 +1,16 @@
+# 本地验证环境精确版本；Python 3.12.3
+Flask==3.1.3
+Werkzeug==3.1.8
+waitress==3.0.2
+Jinja2==3.1.6
+MarkupSafe==3.0.3
+click==8.5.0
+itsdangerous==2.2.0
+blinker==1.9.0
+pytest==9.1.1
+pytest-cov==7.1.0
+coverage==7.16.1
+iniconfig==2.3.0
+packaging==25.0
+pluggy==1.6.0
+Pygments==2.21.0

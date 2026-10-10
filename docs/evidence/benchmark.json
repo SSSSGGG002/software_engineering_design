@@ -1,0 +1,13 @@
+{
+  "time": "2026-10-10T07:53:49",
+  "python": "3.12.3",
+  "mode": "进程内服务调用；20 个线程；200 次名额查询；不含 HTTP/浏览器/真实遗留系统",
+  "cold_catalog_ms": 805.14,
+  "warm_median_ms": 83.58,
+  "warm_p95_ms": 103.13,
+  "warm_max_ms": 110.18,
+  "elapsed_seconds": 0.853,
+  "successful_queries": 200,
+  "legacy_fetch_count": 1,
+  "limitations": "未进行2000/500用户并发验收、7x24可用性或真实Ingres延迟测试"
+}

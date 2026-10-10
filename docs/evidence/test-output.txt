@@ -1,0 +1,36 @@
+...................................................                      [100%]
+================================ tests coverage ================================
+_______________ coverage: platform linux, python 3.12.3-final-0 ________________
+
+Name                           Stmts   Miss  Cover   Missing
+------------------------------------------------------------
+crs/__init__.py                   67      8    88%   71-72, 77, 82, 99-102
+crs/clock.py                      18      1    94%   20
+crs/config.py                     25      0   100%
+crs/db.py                         55      2    96%   73-74
+crs/domain.py                     61      1    98%   102
+crs/errors.py                     29      0   100%
+crs/integration/__init__.py        0      0   100%
+crs/integration/billing.py        29      2    93%   46-47
+crs/integration/catalog.py        99     12    88%   75, 79-81, 100-103, 105-106, 111-113
+crs/seed.py                      106     13    88%   202-212, 217-218
+crs/services/__init__.py           0      0   100%
+crs/services/auth.py              75      5    93%   53, 58-59, 89, 99
+crs/services/billing.py           68      4    94%   90-93
+crs/services/closing.py          128      6    95%   73, 97, 158, 165, 169, 172
+crs/services/offerings.py         54      0   100%
+crs/services/people.py           167     14    92%   49-51, 69, 72, 153-154, 177, 179, 198-199, 236-237, 262
+crs/services/prereq.py             7      0   100%
+crs/services/registration.py     191     10    95%   39, 62, 89, 104, 117, 138, 145, 219, 250-251
+crs/services/semesters.py         91     12    87%   65, 81, 83, 95, 101, 108-109, 111, 113, 119, 121, 132
+crs/services/teaching.py         193     19    90%   58, 68, 73, 77, 93, 97, 104, 108, 124, 130, 143, 162, 180, 220-221, 253-255, 259
+crs/web/__init__.py              107     20    81%   39-40, 71-73, 80, 93, 95, 97-99, 130-131, 141-142, 150-152, 156-158
+crs/web/admin.py                  48     15    69%   23-25, 41, 49-51, 57-64
+crs/web/auth.py                   44     12    73%   17, 37, 43-45, 52-59
+crs/web/professor.py              44     13    70%   25-31, 50-57
+crs/web/registrar.py              79     30    62%   28-29, 58-65, 75-77, 91-98, 108-117
+crs/web/student.py                83     10    88%   24-25, 46-48, 62, 89-90, 100-101
+------------------------------------------------------------
+TOTAL                           1868    209    89%
+Coverage JSON written to file ../build/coverage.json
+51 passed in 26.27s

@@ -1,0 +1,24 @@
+digraph G {
+graph [bgcolor="white",fontname="Noto Sans CJK SC",pad="0.35",nodesep="0.4",ranksep="0.55"];
+node [shape=box,style="rounded,filled",fillcolor="#eef5f5",color="#28756d",fontname="Noto Sans CJK SC",fontsize=12,margin="0.18,0.14"];
+edge [fontname="Noto Sans CJK SC",fontsize=10,color="#516d7f",arrowsize=.7];
+rankdir=LR;
+node [shape=record,style=filled];
+student [label="Student|id : int\lname : str\lstatus : enum\l"];
+prof [label="Professor|id : int\ldepartment : str\l"];
+semester [label="Semester|code : str\lseq : int\lstatus : enum\laddDropEnd : datetime\l"];
+course [label="Course（目录）|courseId : str\lcredits : int\l"];
+off [label="CourseOffering（目录）|offeringId : int\lsemester : str\lTimeSlot\l"];
+state [label="OfferingState（本地）|offeringId : int\lstatus : enum\lprofessorId : int?\l"];
+schedule [label="Schedule|id : int\lversion : int\lstatus : enum\l"];
+item [label="ScheduleItem|kind : enum\lpriority : int\lstatus : enum\l"];
+grade [label="Grade|studentId + offeringId\lgrade : A/B/C/D/F/I\l"];
+box [label="BillingOutbox|key : semester:student\lstatus : PENDING/SENT\l"];
+student -> schedule [label="1 : 0..*",dir=none];semester -> schedule [label="1 : 0..*",dir=none];
+schedule -> item [label="1 : 0..6",arrowtail=diamond,dir=back];
+course -> off [label="1 : 0..*",dir=none];course -> course [label="先修 0..*",style=dashed];
+off -> state [label="1 : 1（导入后）",dir=none];prof -> state [label="0..1 : 0..*",dir=none];
+state -> item [label="1 : 0..*",dir=none];student -> grade [label="1 : 0..*",dir=none];
+state -> grade [label="1 : 0..*",dir=none];student -> box [label="1 : 0..*（历史快照）",style=dashed];
+
+}

@@ -1,0 +1,25 @@
+digraph G {
+graph [bgcolor="white",fontname="Noto Sans CJK SC",pad="0.35",nodesep="0.4",ranksep="0.55"];
+node [shape=box,style="rounded,filled",fillcolor="#eef5f5",color="#28756d",fontname="Noto Sans CJK SC",fontsize=12,margin="0.18,0.14"];
+edge [fontname="Noto Sans CJK SC",fontsize=10,color="#516d7f",arrowsize=.7];
+rankdir=TB;
+node [shape=box];
+u [label="学生提交：首选、备选、expected_version"];
+w [label="Web：会话身份与CSRF → RegistrationService"];
+c [label="事务外：取得目录快照，校验数量与重复"];
+begin [label="BEGIN IMMEDIATE：复核学期、截止、学生状态"];
+version [shape=diamond,label="版本与当前一致？"];
+mutate [label="暂时退选 / 新增条目
+校验先修、开放、容量、首选时间冲突"];
+valid [shape=diamond,label="全部业务规则通过？"];
+rollback [label="ROLLBACK
+原课表与名额保持不变",fillcolor="#fbeee9",color="#b45d47"];
+commit [label="标记ENROLLED、version+1
+组装结果 → COMMIT",fillcolor="#e7f3e9"];
+result [label="成功页面 / 失败保留输入"];
+u -> w -> c -> begin -> version;
+version -> mutate [label="是"];version -> rollback [label="否"];
+mutate -> valid;valid -> rollback [label="否"];valid -> commit [label="是"];
+rollback -> result;commit -> result;
+
+}

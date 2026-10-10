@@ -1,0 +1,27 @@
+digraph G {
+graph [bgcolor="white",fontname="Noto Sans CJK SC",pad="0.35",nodesep="0.4",ranksep="0.55"];
+node [shape=box,style="rounded,filled",fillcolor="#eef5f5",color="#28756d",fontname="Noto Sans CJK SC",fontsize=12,margin="0.18,0.14"];
+edge [fontname="Noto Sans CJK SC",fontsize=10,color="#516d7f",arrowsize=.7];
+rankdir=LR;
+a [label="A 架构/目录/身份
+共享契约与集成",fillcolor="#173346",fontcolor=white];
+b [label="B 人员
+资料与账号生命周期"];
+c [label="C 注册
+课表、容量、先修"];
+d [label="D 教学
+授课、花名册、成绩"];
+e [label="E 关闭
+补位、最终课表、计费"];
+b -> a [label="账号与身份"];
+a -> c [label="目录快照"];
+a -> d [label="目录与归属"];
+a -> e [label="目录/基础事务"];
+d -> c [label="先修成绩"];
+c -> d [label="已注册花名册"];
+c -> e [label="首选/有序备选"];
+e -> d [label="最终花名册"];
+e -> c [label="学期状态守卫"];
+b -> d [label="教授状态"];
+
+}

@@ -1,0 +1,24 @@
+digraph G {
+graph [bgcolor="white",fontname="Noto Sans CJK SC",pad="0.35",nodesep="0.4",ranksep="0.55"];
+node [shape=box,style="rounded,filled",fillcolor="#eef5f5",color="#28756d",fontname="Noto Sans CJK SC",fontsize=12,margin="0.18,0.14"];
+edge [fontname="Noto Sans CJK SC",fontsize=10,color="#516d7f",arrowsize=.7];
+rankdir=LR;
+start [shape=point,label=""];
+planned [label="PLANNED
+未开放"];
+open [label="OPEN
+now < add_drop_end
+加退选进行中"];
+wait [label="OPEN
+now ≥ add_drop_end
+等待最终关闭"];
+closed [label="CLOSED
+课表固定 / 发件箱持久化",fillcolor="#173346",fontcolor=white];
+start -> planned;planned -> open [label="开放 / 截止设为未来"];
+open -> wait [label="到期或注册员结束"];
+wait -> closed [label="关闭事务成功"];
+wait -> wait [label="提交前故障 / 回滚"];
+open -> open [label="尝试关闭 / 拒绝"];
+closed -> closed [label="计费离线 / PENDING重试"];
+
+}
