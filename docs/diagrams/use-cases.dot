@@ -1,0 +1,31 @@
+digraph G {
+graph [bgcolor="white",fontname="Noto Sans CJK SC",pad="0.35",nodesep="0.4",ranksep="0.55"];
+node [shape=box,style="rounded,filled",fillcolor="#eef5f5",color="#28756d",fontname="Noto Sans CJK SC",fontsize=12,margin="0.18,0.14"];
+edge [fontname="Noto Sans CJK SC",fontsize=10,color="#516d7f",arrowsize=.7];
+rankdir=LR;
+s [shape=plaintext,label="«actor»
+学生"];
+p [shape=plaintext,label="«actor»
+教授"];
+r [shape=plaintext,label="«actor»
+注册员"];
+c [shape=plaintext,label="«external»
+课程目录"];
+b [shape=plaintext,label="«external»
+计费系统"];
+subgraph cluster_system {label="课程注册系统边界";color="#bdcdd5";
+login [shape=ellipse,label="登录"];
+reg [shape=ellipse,label="注册课程"];
+report [shape=ellipse,label="查看成绩单"];
+teach [shape=ellipse,label="选择授课"];
+grades [shape=ellipse,label="提交成绩"];
+student [shape=ellipse,label="维护学生信息"];
+prof [shape=ellipse,label="维护教授信息"];
+close [shape=ellipse,label="关闭注册"];
+}
+s -> login [dir=none];p -> login [dir=none];r -> login [dir=none];
+s -> reg [dir=none];s -> report [dir=none];p -> teach [dir=none];p -> grades [dir=none];
+r -> student [dir=none];r -> prof [dir=none];r -> close [dir=none];
+reg -> c [dir=none];teach -> c [dir=none];close -> b [dir=none];
+
+}

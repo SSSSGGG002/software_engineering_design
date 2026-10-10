@@ -1,0 +1,23 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "wylie-course-registration"
+version = "1.0.0"
+description = "软件工程课程设计：课程注册学习参考实现"
+requires-python = ">=3.10"
+dependencies = ["Flask==3.1.3", "Werkzeug==3.1.8", "waitress==3.0.2"]
+
+[project.optional-dependencies]
+test = ["pytest==9.1.1", "pytest-cov==7.1.0"]
+
+[tool.setuptools.packages.find]
+include = ["crs*"]
+
+[tool.setuptools.package-data]
+crs = ["schema.sql", "templates/*.html", "templates/*/*.html", "static/*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]

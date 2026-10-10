@@ -1,0 +1,25 @@
+digraph G {
+graph [bgcolor="white",fontname="Noto Sans CJK SC",pad="0.35",nodesep="0.4",ranksep="0.55"];
+node [shape=box,style="rounded,filled",fillcolor="#eef5f5",color="#28756d",fontname="Noto Sans CJK SC",fontsize=12,margin="0.18,0.14"];
+edge [fontname="Noto Sans CJK SC",fontsize=10,color="#516d7f",arrowsize=.7];
+rankdir=TB;
+browser [label="浏览器：学生 / 教授 / 注册员",fillcolor="#173346",fontcolor="white"];
+web [label="Web层：蓝图、会话角色、表单、模板"];
+services [label="服务层：人员 / 注册 / 教学 / 学期 / 关闭 / 计费"];
+db [shape=cylinder,label="注册系统 SQLite
+人员、课表、成绩、发件箱"];
+cache [label="目录适配：TTL快照 + 单飞锁"];
+legacy [shape=cylinder,label="模拟遗留目录（只读）
+课程 / 先修 / 开课时间"];
+worker [label="计费投递 / 后台重试
+幂等键：学期:学生ID"];
+billing [shape=cylinder,label="模拟计费接收端
+invoice唯一键去重"];
+browser -> web -> services;
+services -> db [label="原子事务"];
+services -> cache -> legacy [label="只读SQL"];
+services -> worker [label="业务提交后"];
+worker -> db [label="读取PENDING / 标记SENT",dir=both];
+worker -> billing [label="幂等投递"];
+
+}

@@ -1,0 +1,16 @@
+/input/
+/build/
+/deliverables/
+/docs/封面-*.docx
+/docs/文档汇编源/
+**/instance/
+**/.venv/
+**/__pycache__/
+**/*.py[cod]
+**/.pytest_cache/
+**/.coverage
+**/htmlcov/
+**/*.egg-info/
+/course-registration/build/
+**/*.sqlite3*
+**/secret.key
